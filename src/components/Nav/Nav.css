@@ -1,0 +1,15 @@
+.nav-list{
+    display: flex;
+    justify-content: end;
+    background-color: black;
+    align-items: center;
+    list-style: none;
+    margin: 0px;
+    padding: 2em 0em 2em 0em;
+}
+
+.nav-item{
+    text-decoration: none;
+    color: white;
+    margin:0em 3em 0em 0em;
+}

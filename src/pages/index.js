@@ -1,21 +1,35 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { Component } from "react"
+import { graphql } from "gatsby"
+import Nav from "../components/Nav/Nav"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+const style = {
+    margin: '25px',
+    padding: '25px',
+}
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+class Page extends Component {
+  render() {
+    const StaticPage = this.props.data.wordpressPage
 
-export default IndexPage
+    return (
+      <>
+        <Nav />
+        <h1>GSA Carleton</h1>
+        <div style={style}>
+            <div dangerouslySetInnerHTML={{ __html: StaticPage.content}}></div>
+        </div>
+      </>
+    )
+  }
+}
+
+export default Page
+
+export const pageQuery = graphql`
+query{
+  wordpressPage(path: {eq: "/"}) {
+      content
+      title
+    }
+  }
+`
