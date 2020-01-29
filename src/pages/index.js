@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { graphql } from "gatsby"
-import Nav from "../components/Nav/Nav"
+import Naav from "../components/Nav/Naav"
 
 const style = {
     margin: '25px',
@@ -13,7 +13,7 @@ class Page extends Component {
 
     return (
       <>
-        <Nav />
+        <Naav />
         <h1>GSA Carleton</h1>
         <div style={style}>
             <div dangerouslySetInnerHTML={{ __html: StaticPage.content}}></div>

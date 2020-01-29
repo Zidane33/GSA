@@ -1,7 +1,7 @@
 .nav-list{
     display: flex;
     justify-content: end;
-    background-color: black;
+    background-color: red;
     align-items: center;
     list-style: none;
     margin: 0px;

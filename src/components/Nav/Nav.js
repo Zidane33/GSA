@@ -29,8 +29,8 @@ export default () => (
     `}
     render={data => {
         console.log(data)
-        const menu = data.allWordpressMenusMenusItems.edges[0].node.items
-        const secondMenu = data.allwor
+        const menu = data.allWordpressMenusMenusItems.edges[0].node.items.filter(x => !x.child_items)
+        const childMenu = data.allWordpressMenusMenusItems.edges[0].node.items.filter(x => x.child_items)
       return (
         <nav className="menu">
           <ul className="nav-list">
@@ -38,19 +38,17 @@ export default () => (
                 return(
                     <li>
                         <a className="nav-item" href={x.url}>
-                            {x.child_items ? x.title && x.child_items.map(y => {
-                                return (
-                                    <li>
-                                        <a href={y.url}>
-                                            {y.title}
-                                        </a>
-                                    </li>
-                                )
-                            }) : x.title}
+                            {x.title}
                         </a>
                     </li>
                 )
-            })}
+            })} + {childMenu.map(x => (
+                <li>
+                    <a className="nav-item" href={x.url}>
+                        {x.title}
+                    </a>
+                </li>
+            ))}
           </ul>
         </nav>
       )
