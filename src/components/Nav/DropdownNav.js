@@ -7,7 +7,6 @@ export default class DropdownNav extends React.Component {
     
     getMenuItem = (menuItem, depthLevel, index) => {
         let title = this.getMenuItemTitle(menuItem, index, depthLevel);
-        console.log(menuItem)
 
         return (menuItem.child_items && menuItem.child_items !== null ? (
                 <li>
@@ -23,7 +22,6 @@ export default class DropdownNav extends React.Component {
     render() {
         let { config } = this.props;
 
-        console.log(config)
 
         let options = []
 
