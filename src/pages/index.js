@@ -11,10 +11,6 @@ const style = {
 class Page extends Component {
   render() {
     const StaticPage = this.props.data.wordpressPage
-    const parser = new DOMParser();
-    const parsedHtml = parser.parseFromString(StaticPage.content, 'text/html');
-    parsedHtml.body.querySelectorAll('p')[0].classList.add('red');
-    console.log(parsedHtml.body.querySelectorAll('p'));
 
     return (
       <>
