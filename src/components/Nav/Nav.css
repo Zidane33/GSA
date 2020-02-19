@@ -1,9 +1,20 @@
+a, a:visited, a:hover, a:link {
+    text-decoration: none;
+    color: white;
+}
+
 .nav-list {
     display: flex;
     justify-content: flex-end;
+    flex-wrap: nowrap;
     background-color: black;
     color: white;
     margin-left: 0;
+}
+.nav-list a {
+    float: left;
+    text-align: center;
+    padding: 1em 2em;
 }
 
 .dropdown-menu {
@@ -16,8 +27,11 @@
     display: inline-block;
     position: relative;
     text-decoration: none;
-    margin: 0em 1em 0em 1em;
+    display: flex;
+    flex-direction: center;
+    margin: 0em 0em 0em 0em;
     padding: 0em 0em 1em 0em;
+    width: 10em;
 }
 
 .dropdown-menu li:hover {
@@ -46,8 +60,6 @@
     display: block;
     background-color: black;
     position: absolute;
+    top: auto;
     left: 100%;
-    top: 0;
-    margin-left: 1em;
-    padding-top: 1em;
 }
