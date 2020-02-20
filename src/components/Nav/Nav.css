@@ -1,65 +1,9 @@
 a, a:visited, a:hover, a:link {
     text-decoration: none;
-    color: white;
 }
 
 .nav-list {
     display: flex;
     justify-content: flex-end;
     flex-wrap: nowrap;
-    background-color: black;
-    color: white;
-    margin-left: 0;
-}
-.nav-list a {
-    float: left;
-    text-align: center;
-    padding: 1em 2em;
-}
-
-.dropdown-menu {
-    list-style: none;
-    margin: 0;
-    text-align: center;
-}
-
-.dropdown-menu li {
-    display: inline-block;
-    position: relative;
-    text-decoration: none;
-    display: flex;
-    flex-direction: center;
-    margin: 0em 0em 0em 0em;
-    padding: 0em 0em 1em 0em;
-    width: 10em;
-}
-
-.dropdown-menu li:hover {
-    background-color: black;
-}
-
-/* first depth */
-.dropdown-menu li ul {
-    position: absolute;
-    display: none;
-    top: 100%;
-}
-
-/* second depth put hover after li */
-.dropdown-menu li:hover ul { 
-    display: block;
-    background-color: black;
-}
-
-/* third depth */
- .dropdown-menu li:hover ul li ul {
-    display: none;
-}
-
-.dropdown-menu li:hover ul li:hover ul {
-    display: block;
-    background-color: black;
-    position: absolute;
-    top: auto;
-    left: 100%;
 }

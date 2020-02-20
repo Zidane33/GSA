@@ -1,6 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql } from "gatsby"
-import DropDownNav from './DropdownNav';
+import BootstrapNav from './BootstrapNav';
 import './Nav.css';
 
 export default class Naav extends React.Component {
@@ -35,9 +35,7 @@ export default class Naav extends React.Component {
                 const menu = data.allWordpressMenusMenusItems.edges[0].node.items
               return (
                 <nav>
-                  <ul className="nav-list">
-                    <DropDownNav config={menu} />
-                  </ul>
+		    <BootstrapNav config={menu} />
                 </nav>
               )
             }}
