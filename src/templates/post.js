@@ -1,12 +1,12 @@
 import React, { Component } from "react"
 import { graphql } from "gatsby"
 import PropTypes from "prop-types"
+import Nav from "../components/Nav/Nav"
 import './post.css'
 
 const style = {
-    margin: '25px',
-    padding: '25px',
-    background: 'red',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, 10%)', 
 }
 
 class Post extends Component {
@@ -15,9 +15,10 @@ class Post extends Component {
 
     return (
       <>
-        <h1>{post.title}</h1>
+        <Nav />
         <div style={style}>
-            <div dangerouslySetInnerHTML={{ __html: post.content}}></div>
+            <h2 style={{gridColumn: '4/9', marginTop: '2em'}} dangerouslySetInnerHTML={{ __html: post.title}}></h2>
+            <div style={{alignSelf: 'center', gridColumn: '4/8', marginTop: '1em'}} dangerouslySetInnerHTML={{ __html: post.content}}></div>
         </div>
       </>
     )

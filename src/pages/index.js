@@ -5,8 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const style = {
-    margin: '25px',
-    padding: '25px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, 10%)', 
+
 }
 
 
@@ -17,9 +18,8 @@ class Page extends Component {
     return (
       <>
         <Nav />
-        <h1>GSA Carleton</h1>
         <div style={style}>
-            <div dangerouslySetInnerHTML={{ __html: StaticPage.content}}></div>
+            <div style={{alignSelf: 'center', gridColumn: '4/8', marginTop: '4em'}} dangerouslySetInnerHTML={{ __html: StaticPage.content}}></div>
         </div>
       </>
     )
@@ -32,7 +32,6 @@ export const pageQuery = graphql`
 query{
   wordpressPage(path: {eq: "/"}) {
       content
-      title
     }
   }
 `
