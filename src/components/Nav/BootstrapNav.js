@@ -11,36 +11,43 @@ export default class BootstrapNav extends React.Component {
     getMenuItemUrl = (menuItem) => {
         return menuItem.url;
     }
-    
-    getMenuItem = (menuItem, depthLevel, index) => {
-        let title = this.getMenuItemTitle(menuItem, index, depthLevel);
-        let url = this.getMenuItemUrl(menuItem, index, depthLevel);
 
-        return (menuItem.child_items && menuItem.child_items !== null ? (
-                <Nav.Link href={url}>
-		    {title}
-		    <NavDropdown>	
-			    {menuItem.child_items.map(menuItem => 
-				    (<NavDropdown.Item>
-					    <Nav.Link href={menuItem.url}></Nav.Link>
-					    {menuItem.child_items ? (
-						    <NavDropdown title={menuItem.title}> 
-							    {menuItem.child_items.map(secondMenuItem => 
-								    <NavDropdown.Item>
-									    <Nav.Link href={secondMenuItem.url}></Nav.Link>
-									    {secondMenuItem.title}
-								    </NavDropdown.Item>
-							    )}</NavDropdown>): menuItem.title}
-				    </NavDropdown.Item>)
-			    )}
-		    </NavDropdown>	
-                </Nav.Link>
-        ) : (
-	        <Nav.Link href={url}>
-	        {title}
-	        </Nav.Link>
-        )
-        )
+    getMenuChildItems = (menuItem) => {
+        return menuItem.child_items !== null ? menuItem.child_items : [];
+    }
+    
+    getMenuItem = (menuItem) => {
+        let title = this.getMenuItemTitle(menuItem);
+        let url = this.getMenuItemUrl(menuItem);
+        let childItems = this.getMenuChildItems(menuItem);
+        let noMenuLink = <Nav.Link href={url}>{title}</Nav.Link>
+        let menuLink = <NavDropdown title={title}>
+                            {childItems !== [] && childItems.map(submenu => (
+                                <div>
+                                {submenu.child_items ? (
+                                    <NavDropdown title={submenu.title}> 
+                                        <Nav.Item as='a' href={submenu.url}>
+                                            {submenu.child_items.map(tertiaryMenu => (
+                                                <Nav.Link href={tertiaryMenu.url}>
+                                                    {tertiaryMenu.title}
+                                                </Nav.Link>
+                                            )
+                                            )}
+                                        </Nav.Item>
+                                    </NavDropdown>): (
+                                        <Nav.Link href={submenu.url}>
+                                            {submenu.title}
+                                        </Nav.Link>
+                                    )}
+                                </div>
+                            ))} 
+                        </NavDropdown>
+        if(menuItem.child_items == null){
+            return noMenuLink;
+        }
+        else {
+            return menuLink
+        }
     }
     
     render() {
@@ -49,17 +56,13 @@ export default class BootstrapNav extends React.Component {
 
         let options = []
 
-        config.map((item, index) => {
-            return options.push(this.getMenuItem(item, 0, index));
+        config.map((item) => {
+            return options.push(this.getMenuItem(item));
         });
 
-	    return <Navbar style={{background: 'black'}} variant="dark" expand="lg">
-			<Navbar.Toggle aria-controls="basic-navbar-nav" />
-			<Navbar.Collapse id="basic-navbar-nav">
-				<Nav className="ml-auto">
-					{options}
-				</Nav>
-		</Navbar.Collapse>
-       </Navbar>
+	    return (
+		    <Navbar style={{color: 'red'}} className="ml-auto">
+                {options}
+            </Navbar> )
     }
 }

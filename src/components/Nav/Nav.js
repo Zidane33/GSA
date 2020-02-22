@@ -1,9 +1,10 @@
 import React from 'react';
 import { StaticQuery, graphql } from "gatsby"
+import Navbar from 'react-bootstrap/Navbar';
 import BootstrapNav from './BootstrapNav';
 import './Nav.css';
 
-export default class Naav extends React.Component {
+export default class Nav extends React.Component {
 
     render() {
         return(
@@ -34,9 +35,12 @@ export default class Naav extends React.Component {
             render={data => {
                 const menu = data.allWordpressMenusMenusItems.edges[0].node.items
               return (
-                <nav>
-		    <BootstrapNav config={menu} />
-                </nav>
+		<Navbar style={{background: 'black'}} variant="dark" expand="lg">
+			<Navbar.Toggle aria-controls="basic-navbar-nav" />
+			<Navbar.Collapse id="basic-navbar-nav">
+			    <BootstrapNav config={menu} />
+			</Navbar.Collapse>
+                </Navbar>
               )
             }}
           />
