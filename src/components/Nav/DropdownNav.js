@@ -1,20 +1,29 @@
 import React from 'react';
 
 export default class DropdownNav extends React.Component {
-    getMenuItemTitle = (menuItem, index, depthLevel) => {
+    getMenuItemTitle = (menuItem) => {
         return menuItem.title;
+    }
+
+    getMenuItemUrl = (menuItem) => {
+        return menuItem.url;
     }
     
     getMenuItem = (menuItem, depthLevel, index) => {
         let title = this.getMenuItemTitle(menuItem, index, depthLevel);
+        let url = this.getMenuItemUrl(menuItem, index, depthLevel);
 
         return (menuItem.child_items && menuItem.child_items !== null ? (
-                <li>
+                <a href={url}>
+		    <li>
                     {title}
                     <DropdownNav config={menuItem.child_items} />
-                </li>
+		    </li>
+                </a>
         ) : (
-             <li>{title}</li>
+	        <a href={url}>
+	        {title}
+	        </a>
         )
         )
     }

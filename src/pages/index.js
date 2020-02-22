@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { graphql } from "gatsby"
 import Nav from "../components/Nav/Nav"
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const style = {
     margin: '25px',
