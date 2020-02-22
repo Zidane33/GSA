@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 export default class BootstrapNav extends React.Component {
     getMenuItemTitle = (menuItem) => {
@@ -25,12 +26,12 @@ export default class BootstrapNav extends React.Component {
                             {childItems !== [] && childItems.map(submenu => (
                                 <div>
                                 {submenu.child_items ? (
-                                    <NavDropdown title={submenu.title}> 
+                                    <NavDropdown title={submenu.title} drop='right'> 
                                         <Nav.Item as='a' href={submenu.url}>
                                             {submenu.child_items.map(tertiaryMenu => (
-                                                <Nav.Link href={tertiaryMenu.url}>
+                                                <Dropdown.Item href={tertiaryMenu.url}>
                                                     {tertiaryMenu.title}
-                                                </Nav.Link>
+                                                </Dropdown.Item>
                                             )
                                             )}
                                         </Nav.Item>
