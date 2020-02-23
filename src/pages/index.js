@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { graphql } from "gatsby"
 import Nav from "../components/Nav/Nav"
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Footer from '../components/Footer/Footer';
 
 const style = {
     display: 'grid',
@@ -21,6 +21,7 @@ class Page extends Component {
         <div style={style}>
             <div style={{alignSelf: 'center', gridColumn: '4/8', marginTop: '4em'}} dangerouslySetInnerHTML={{ __html: StaticPage.content}}></div>
         </div>
+        <Footer />
       </>
     )
   }

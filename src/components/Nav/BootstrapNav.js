@@ -54,7 +54,6 @@ export default class BootstrapNav extends React.Component {
     render() {
         let { config } = this.props;
 
-
         let options = []
 
         config.map((item) => {

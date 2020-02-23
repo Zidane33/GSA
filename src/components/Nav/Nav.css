@@ -1,9 +1,4 @@
 a, a:visited, a:hover, a:link {
     text-decoration: none;
-}
-
-.nav-list {
-    display: flex;
-    justify-content: flex-end;
-    flex-wrap: nowrap;
+    color: 'gold';
 }
