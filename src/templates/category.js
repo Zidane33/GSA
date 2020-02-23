@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import Pagination from 'react-bootstrap/Pagination';
 import Nav from '../components/Nav/Nav';
 import Footer from '../components/Footer/Footer';
 
@@ -9,18 +10,55 @@ const style = {
 }
 
 class Category extends React.Component {
+    constructor(props){
+        super(props);
+        this.state={
+            page: 1,
+        }
+    }
+
+    renderPosts = param => key => {
+       if(param < 1){
+           return
+       }
+       this.setState({
+           page: param}) 
+    }
+
+    setPosts = (key, arr) => {
+        return arr.slice(key, key + 5);
+    }
+
     render() {
         const category = this.props.data.allWordpressPost.edges;
-        console.log(category);
+        const postsToRender = this.setPosts(this.state.page, category);
+        const lastPage = category.length - 1;
 
         return (
             <>
                 <Nav />
                 <div style={style}>
-                    <h4 style={{gridColumn: '4/9', marginTop: '2em'}} dangerouslySetInnerHTML={{ __html: category[0].node.title}}></h4>
-                    <a href={category[0].node.link}>
-                        <p dangerouslySetInnerHTML={{ __html: category[0].node.title}}></p> 
-                    </a>
+                    <div style={{gridColumn: '4/9', marginTop: '2em'}}>
+                        {postsToRender.map(post => (
+                            <div>
+                                <a href={post.node.link}>
+                                    <h2 dangerouslySetInnerHTML={{ __html: post.node.title}}></h2>
+                                </a>
+                                <p dangerouslySetInnerHTML={{ __html: post.node.excerpt}}></p>
+                            </div>
+                        ))}
+                        <Pagination className='d-flex justify-content-center'>
+                            <Pagination.First onClick={this.renderPosts(1)}/>
+                            <Pagination.Prev onClick={this.renderPosts(this.state.page - 1)}/>
+                            <Pagination.Item active onClick={this.renderPosts(this.state.page)}>{this.state.page}</Pagination.Item>
+                            <Pagination.Item onClick={this.renderPosts(this.state.page + 1)}>{this.state.page + 1}</Pagination.Item>
+                            <Pagination.Item onClick={this.renderPosts(this.state.page + 2)}>{this.state.page + 2}</Pagination.Item>
+                            <Pagination.Item onClick={this.renderPosts(this.state.page + 3)}>{this.state.page + 3}</Pagination.Item>
+                            <Pagination.Item onClick={this.renderPosts(this.state.page + 4)}>{this.state.page + 4}</Pagination.Item>
+                            <Pagination.Next onClick={this.renderPosts(this.state.page + 1)}/>
+                            <Pagination.Last onClick={this.renderPosts(lastPage)}/>
+                        </Pagination>
+                    </div>
                 </div>
                 <Footer />
             </>
@@ -37,6 +75,7 @@ export const categoryQuery = graphql`
                 node {
                     title
                     link
+                    excerpt
                 }
             }
         }
