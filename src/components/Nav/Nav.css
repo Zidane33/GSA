@@ -1,4 +1,8 @@
-a, a:visited, a:hover, a:link {
+a, a:visited, a:link {
     text-decoration: none;
-    color: 'gold';
+    color: #dbbd27;
+}
+
+a:visited:hover, a:hover {
+    color: grey !important; 
 }

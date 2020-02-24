@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Logo from '../../images/gsalogo.png';
 
 export default class BootstrapNav extends React.Component {
     getMenuItemTitle = (menuItem) => {
@@ -61,8 +62,14 @@ export default class BootstrapNav extends React.Component {
         });
 
 	    return (
-		    <Navbar style={{color: 'red'}} className="ml-auto">
-                {options}
+            <Navbar style={{background: 'black'}} variant="dark" expand="lg">
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Navbar.Brand>
+                        <img src={Logo} width='70' height='70' alt='logo' style={{margin: '0 9em 0 0'}} />
+                    </Navbar.Brand>
+                    {options}
+                </Navbar.Collapse>
             </Navbar> )
     }
 }
