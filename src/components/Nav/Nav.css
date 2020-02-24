@@ -1,9 +1,8 @@
-a, a:visited, a:hover, a:link {
+a, a:visited, a:link {
     text-decoration: none;
+    color: #dbbd27;
 }
 
-.nav-list {
-    display: flex;
-    justify-content: flex-end;
-    flex-wrap: nowrap;
+a:visited:hover, a:hover {
+    color: grey !important; 
 }

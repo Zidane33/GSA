@@ -35,12 +35,7 @@ export default class Nav extends React.Component {
             render={data => {
                 const menu = data.allWordpressMenusMenusItems.edges[0].node.items
               return (
-		<Navbar style={{background: 'black'}} variant="dark" expand="lg">
-			<Navbar.Toggle aria-controls="basic-navbar-nav" />
-			<Navbar.Collapse id="basic-navbar-nav">
 			    <BootstrapNav config={menu} />
-			</Navbar.Collapse>
-                </Navbar>
               )
             }}
           />
