@@ -30,17 +30,13 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        // your WordPress source
         baseUrl: `gsacarleton.ca`,
         protocol: `https`,
-        // is it hosted on wordpress.com, or self-hosted?
         hostingWPCOM: false,
-        // does your site use the Advanced Custom Fields Plugin?
         useACF: false,
-        auth: {
-          htaccess_user: "MC",
-          htaccess_pass: "becks237",
-          htaccess_sendImmediately: false
+        searchAndReplaceContentUrls: {
+          sourceUrl: "https://gsacarleton.ca",
+          replacementUrl: "http://localhost:8000"
         },
         includedRoutes: [
           "**/posts",
