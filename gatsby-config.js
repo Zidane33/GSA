@@ -37,6 +37,11 @@ module.exports = {
         hostingWPCOM: false,
         // does your site use the Advanced Custom Fields Plugin?
         useACF: false,
+        auth: {
+          htaccess_user: "MC",
+          htaccess_pass: "becks237",
+          htaccess_sendImmediately: false
+        },
         includedRoutes: [
           "**/posts",
           "**/pages",

@@ -4,8 +4,6 @@ import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Logo from '../../images/gsalogo.png';
-import { Link } from 'gatsby';
-import parse from 'url-parse';
 
 export default class BootstrapNav extends React.Component {
     getMenuItemTitle = (menuItem) => {
@@ -13,8 +11,7 @@ export default class BootstrapNav extends React.Component {
     }
 
     getMenuItemUrl = (menuItem) => {
-        const url = parse(menuItem.url, true);
-        return url.pathname;
+        return menuItem.url;
     }
 
     getMenuChildItems = (menuItem) => {
@@ -24,24 +21,23 @@ export default class BootstrapNav extends React.Component {
     getMenuItem = (menuItem) => {
         let title = this.getMenuItemTitle(menuItem);
         let url = this.getMenuItemUrl(menuItem);
-        console.log(url)
         let childItems = this.getMenuChildItems(menuItem);
-        let noMenuLink = <Link to={url}>{title}</Link>
+        let noMenuLink = <Nav.Link href={url}>{title}</Nav.Link>
         let menuLink = <NavDropdown title={title}>
-                            {childItems !== [] && childItems.map((submenu, index) => (
-                                <div key={index}>
+                            {childItems !== [] && childItems.map(submenu => (
+                                <div>
                                 {submenu.child_items ? (
-                                    <NavDropdown key={index} title={submenu.title} drop='right'> 
-                                        <Nav.Item as='a' href={this.getMenuItemUrl(submenu)}>
-                                            {submenu.child_items.map((tertiaryMenu, index) => (
-                                                <Dropdown.Item key={index} href={this.getMenuItemUrl(submenu)}>
+                                    <NavDropdown title={submenu.title} drop='right'> 
+                                        <Nav.Item as='a' href={submenu.url}>
+                                            {submenu.child_items.map(tertiaryMenu => (
+                                                <Dropdown.Item href={tertiaryMenu.url}>
                                                     {tertiaryMenu.title}
                                                 </Dropdown.Item>
                                             )
                                             )}
                                         </Nav.Item>
                                     </NavDropdown>): (
-                                        <Nav.Link key={index} href={this.getMenuItemUrl(submenu)}>
+                                        <Nav.Link href={submenu.url}>
                                             {submenu.title}
                                         </Nav.Link>
                                     )}
