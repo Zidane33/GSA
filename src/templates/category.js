@@ -44,9 +44,9 @@ class Category extends React.Component {
                         ))}
                         <Pagination className='d-flex justify-content-center'>
                             <Pagination.First onClick={this.renderPosts(1)}/>
-                            <Pagination.Prev onClick={this.renderPosts(this.state.page - 5)}/>
+                            <Pagination.Prev onClick={this.renderPosts(this.state.page - 1)}/>
                             <Pagination.Item active onClick={this.renderPosts(this.state.page)}>{this.state.page}</Pagination.Item>
-                            <Pagination.Next onClick={this.renderPosts(this.state.page + 5)}/>
+                            <Pagination.Next onClick={this.renderPosts(this.state.page + 1)}/>
                             <Pagination.Last onClick={this.renderPosts(lastPage)}/>
                         </Pagination>
                     </div>

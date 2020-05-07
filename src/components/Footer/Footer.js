@@ -25,7 +25,7 @@ export default class Footer extends React.Component {
         render={data => {
             const menu = data.allWordpressMenusMenusItems.edges[0].node.items;
             return (
-                <Navbar className='mt-5' style={{background: 'black', display:'flex', justifyContent: 'center'}} variant="dark" expand="lg">
+                <Navbar className='mt-5' style={{background: 'black', display:'flex', justifyContent: 'center'}} sticky='bottom' variant="dark" expand="lg">
                     {menu.map(item => (
                         <Nav.Link href={item.url}>
                             {item.title}
