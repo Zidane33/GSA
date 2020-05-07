@@ -1,11 +1,7 @@
 import React, { Component } from "react"
 import { graphql } from "gatsby"
 import Nav from "../components/Nav/Nav"
-
-const style = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, 10%)', 
-}
+import './page.css';
 
 class Page extends Component {
   render() {
@@ -14,7 +10,7 @@ class Page extends Component {
     return (
       <>
         <Nav />
-        <div style={style}>
+        <div className='main-content'>
             <h1 style={{gridColumn: '4/9', marginTop: '2em'}} dangerouslySetInnerHTML={{ __html: StaticPage.title}}></h1>
             <div style={{alignSelf: 'center', gridColumn: '4/8', marginTop: '4em'}} dangerouslySetInnerHTML={{ __html: StaticPage.content}}></div>
         </div>

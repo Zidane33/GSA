@@ -4,11 +4,6 @@ import Pagination from 'react-bootstrap/Pagination';
 import Nav from '../components/Nav/Nav';
 import Footer from '../components/Footer/Footer';
 
-const style = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, 10%)',
-}
-
 class Category extends React.Component {
     constructor(props){
         super(props);
@@ -37,7 +32,7 @@ class Category extends React.Component {
         return (
             <>
                 <Nav />
-                <div style={style}>
+                <div className='main-content'>
                     <div style={{gridColumn: '4/9', marginTop: '2em'}}>
                         {postsToRender.map(post => (
                             <div>
@@ -49,13 +44,9 @@ class Category extends React.Component {
                         ))}
                         <Pagination className='d-flex justify-content-center'>
                             <Pagination.First onClick={this.renderPosts(1)}/>
-                            <Pagination.Prev onClick={this.renderPosts(this.state.page - 1)}/>
+                            <Pagination.Prev onClick={this.renderPosts(this.state.page - 5)}/>
                             <Pagination.Item active onClick={this.renderPosts(this.state.page)}>{this.state.page}</Pagination.Item>
-                            <Pagination.Item onClick={this.renderPosts(this.state.page + 1)}>{this.state.page + 1}</Pagination.Item>
-                            <Pagination.Item onClick={this.renderPosts(this.state.page + 2)}>{this.state.page + 2}</Pagination.Item>
-                            <Pagination.Item onClick={this.renderPosts(this.state.page + 3)}>{this.state.page + 3}</Pagination.Item>
-                            <Pagination.Item onClick={this.renderPosts(this.state.page + 4)}>{this.state.page + 4}</Pagination.Item>
-                            <Pagination.Next onClick={this.renderPosts(this.state.page + 1)}/>
+                            <Pagination.Next onClick={this.renderPosts(this.state.page + 5)}/>
                             <Pagination.Last onClick={this.renderPosts(lastPage)}/>
                         </Pagination>
                     </div>

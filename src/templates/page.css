@@ -1,0 +1,12 @@
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 10%)
+}
+
+@media screen and (max-width: 1000px){
+    div.main-content {
+        grid-template-columns: 1fr;
+        margin: 0 10%;
+        overflow-wrap: anywhere;
+    }
+}
